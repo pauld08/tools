@@ -1,0 +1,6 @@
+version: '2'
+services:
+  github-email:
+    build: .
+    ports:
+     - "8888:8888"

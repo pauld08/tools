@@ -1,0 +1,13 @@
+{
+  "name": "@fouad/github-trending",
+  "scripts": {
+    "start": "micro -p 3000",
+    "dev": "DEBUG=* micro -p 4000"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "debug": "^2.5.1",
+    "hashlru": "^1.0.3",
+    "micro": "6.1.0"
+  }
+}
