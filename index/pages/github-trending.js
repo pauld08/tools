@@ -23,8 +23,12 @@ const options = [{
   params: '?language=go'
 }, {
   id: 3,
-  name: 'Top Weekly',
+  name: 'Top Weekly Overall',
   params: ''
+}, {
+  id: 4,
+  name: 'Top Monthly Overall',
+  params: '?daysAgo=31'
 }]
 
 class GithubTrending extends Component {

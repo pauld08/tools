@@ -4,8 +4,18 @@ import React from 'react'
 export const RepoList = ({ repos }) => (
   <div className="mt3">
     {repos.map(repo => (
-      <div key={'repo-' + repo.id} className="pa2 pb3 bt b--light-gray">
+      <div key={'repo-' + repo.id} className="pa2 bt b--light-gray">
         <div>
+          <a
+            href={repo.owner.html_url}
+            target="_blank"
+            className="db mv2 dark-gray no-underline underline-hover dim"
+          >
+            <div className="flex flex-row">
+              <img src={repo.owner.avatar_url} className="w1 h1 br2" />
+              <span className="db fw6 f5 ml2" style={{lineHeight: 1}}>{repo.owner.login}</span>
+            </div>
+          </a>
           <a
             href={repo.html_url}
             target="_blank"
@@ -30,16 +40,15 @@ export const RepoList = ({ repos }) => (
               </div>
             </div>
           </a>
+          {repo.homepage && (
+            <a
+              className="no-underline underline-hover"
+              href={repo.homepage}
+              target="_blank"
+            >{repo.homepage}</a>
+          )}
           <p className="mt1 gray">{repo.description}</p>
-          <a
-            href={repo.owner.html_url}
-            className="dark-gray no-underline underline-hover dim"
-          >
-            <div className="flex flex-row">
-              <img src={repo.owner.avatar_url} className="w1 h1 br2" />
-              <span className="db fw6 f5 ml2" style={{lineHeight: 1}}>{repo.owner.login}</span>
-            </div>
-          </a>
+
         </div>
       </div>
     ))}

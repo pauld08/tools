@@ -6,6 +6,7 @@ const { get } = require('axios')
 const { stringify } = require('querystring')
 const { parse: parseURL } = require('url')
 
+let cache = LRU(20)
 const getSearchURL = searchParams => (
   'https://api.github.com/search/repositories?' + searchParams
 )
@@ -20,7 +21,7 @@ module.exports = async (req, res) => {
   ) : ''
 
   if (params.bust) {
-    cache.reset()
+    cache = LRU(20)
   }
 
   const startDate = new Date()
@@ -45,8 +46,6 @@ const cors = (res) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
 }
-
-const cache = LRU(20)
 
 const loadRepos = async (searchURL) => {
   if (cache.get(searchURL)) {
